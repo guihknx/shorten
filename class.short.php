@@ -11,23 +11,40 @@
  * 
  **/
 
-class shorten {
+class shorten { 
 	/**
-	 * The hash no need edit it! 
-	 * 
+	 * The hash no need edit it!
 	 **/
 	public $hash;
-	/* Our URL propetiye */
+
+	/** 
+	* Our URL propetiye 
+	**/
 	public $url;
-	/* Our data timestamp No need edit it! */
+
+	/** 
+	* Our data timestamp No need edit it! 
+	**/	
 	public $data;
-	/* OPur current number of clicks starts at 0 */
+
+	/** 
+	* Our current number of clicks starts at 0 
+	**/	
 	public $clicks;
-	/* Our PDO object class will handle querys for us */
+
+	/** 
+	* Our PDO object class will handle querys for us 
+	*/	
 	public $pdo;
-	/* The uniq identifyer about the URL store into database */
+
+	/** 
+	* The uniq identifyer about the URL store into database 
+	**/	
 	public $id;
-	/* If you reading details about url you can sort what do you want to show/redirect/print/display */
+
+	/** 
+	* If you reading details about url you can sort what do you want to show/redirect/print/display 
+	**/	
 	public $field;
 
 	public function __construct()
