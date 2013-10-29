@@ -98,7 +98,7 @@ class shorten {
 	* This function acess database and return data about the url
 	* 
 	* $id (intval)
-	* $field (string)
+	* $field (string) 
 	*
 	* @since v1.0
 	**/
