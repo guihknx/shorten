@@ -114,11 +114,11 @@ class shorten {
 				switch ( $this->field ) :
 
 					case 'url' :
-					$query = $this->pdo->prepare( 'UPDATE shorten SET clicks = :clicks WHERE id = :id' );
-					
-					$query->execute( array(
-						':id'   => $data->id,
-						':clicks' => $data->clicks+1
+						$query = $this->pdo->prepare( 'UPDATE shorten SET clicks = :clicks WHERE id = :id' );
+						
+						$query->execute( array(
+							':id'   => $data->id,
+							':clicks' => $data->clicks+1,
 						) );
 
 						echo $data->url;
