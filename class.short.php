@@ -94,6 +94,31 @@ class shorten{
 			echo $e->getMessage();
 		}
 	}
+
+	public function readUser($username, $password =  '') 
+	{
+
+		$query = $this->pdo->prepare("SELECT `password`, `id` FROM `users` WHERE `username` = ?");
+		$query->bindValue( 1, $username );
+
+		try{
+
+			$query->execute();
+			$data = $query->fetch();
+
+			$stored_password = $data['password'];
+
+			if ( $stored_password != @md5( $password ) )
+				return;	
+
+			
+			$this->setLoggedIn( $data['id'] );
+
+		}catch( PDOException $e ){
+			echo $e->getMessage();
+		}
+
+	}
 }
 
 $a = new shorten();
