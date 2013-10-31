@@ -25,15 +25,20 @@ class shorten{
 			return; 
 	}
 
-   	public function addUrl($url){
-	   try{
-	   		$this->url = $url;
+	public function addUrl($url){
+		$this->url = $url;
 
-			$query = $this->pdo->prepare("INSERT INTO shorten(hash, url, data, clicks) VALUES (?, ?, ?, ?)");
+		if($this->logged_in()) 
+			$this->owner = $_SESSION['id'];
+
+		try{
+
+			$query = $this->pdo->prepare("INSERT INTO shorten(hash, url, data, clicks, owner) VALUES (?, ?, ?, ?, ?)");
 			$query->bindParam(1, $this->hash, PDO::PARAM_INT);
 			$query->bindParam(2, $this->url, PDO::PARAM_STR);
 			$query->bindParam(3, $this->data, PDO::PARAM_STR);
 			$query->bindParam(4, $this->clicks, PDO::PARAM_INT);
+			$query->bindParam(5, $this->owner, PDO::PARAM_INT);
 			$end = $query->execute();
 
 			if ( !$end ) 
@@ -41,10 +46,10 @@ class shorten{
 
 			return true;
 
-	   }
-	   catch(PDOException $e){
-	      echo $e->getMessage();
-	   }
+		}
+		catch(PDOException $e){
+			echo $e->getMessage();
+		}
 	}
 	public function readUrl($id, $field){
 		try{
