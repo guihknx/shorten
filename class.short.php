@@ -189,6 +189,10 @@ class shorten{
 		$_SESSION['id'] = $id;
 		return $id;
 	}
+
+	public function logged_in () {
+		return( isset( $_SESSION['id'] ) ) ? true : false;
+	}
 }
 
 $a = new shorten();
