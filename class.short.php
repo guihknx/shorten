@@ -193,6 +193,22 @@ class shorten{
 	public function logged_in () {
 		return( isset( $_SESSION['id'] ) ) ? true : false;
 	}
+	
+	public function safeLoggedIn() 
+	{
+		if ( $this->logged_in() === true ) 
+			exit();	
+		
+		return;
+	}
+	public function safeLogOut() 
+	{
+		if ( $this->logged_in() === false ) 
+			unset($_SESSION);
+			exit();
+
+		return;
+	}
 }
 
 $a = new shorten();
