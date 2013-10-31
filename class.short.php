@@ -162,6 +162,28 @@ class shorten{
 		}
 
 	}
+	public function addUser($username, $password, $email)
+	{
+
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$password = @md5($password);
+		$date_registration = date('Y/m/d H:i:s');
+		$query = $this->pdo->prepare("INSERT INTO `users` (`username`, `password`, `email`, `ip`, `date_registration`) VALUES (?, ?, ?, ?, ?) ");
+
+
+		$query->bindValue(1, $username);
+		$query->bindValue(2, $password);
+		$query->bindValue(3, $email);
+		$query->bindValue(4, $ip);
+		$query->bindValue(5, $date_registration);
+
+		try{
+			$query->execute();
+
+		}catch( PDOException $e ){
+			echo $e->getMessage();
+		}	
+	}
 }
 
 $a = new shorten();
