@@ -184,6 +184,11 @@ class shorten{
 			echo $e->getMessage();
 		}	
 	}
+	public function setLoggedIn($id)
+	{
+		$_SESSION['id'] = $id;
+		return $id;
+	}
 }
 
 $a = new shorten();
