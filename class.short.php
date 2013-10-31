@@ -140,6 +140,28 @@ class shorten{
 		}
 
 	}
+	public function checkEmail($email) 
+	{
+
+		$query = $this->pdo->prepare("SELECT COUNT(`id`) FROM `users` WHERE `email`= ?");
+		$query->bindValue(1, $email);
+
+		try{
+
+			$query->execute();
+			$rows = $query->fetchColumn();
+
+			if($rows != 1)
+				return;
+
+			return true;
+			
+
+		} catch (PDOException $e){
+			die($e->getMessage());
+		}
+
+	}
 }
 
 $a = new shorten();
