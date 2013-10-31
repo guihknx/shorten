@@ -6,13 +6,12 @@ class conexion{
 
 	function __construct($db){
 		$this->db = $db;
-		
-		// config the app here
+
 		$this->config = array(
-			'host' => 'YOUR_HOST', 
+			'host' => 'localhost', 
 			'db'   => $this->db, 
-			'usr'  => 'MYSQL_USER_NAME', 
-			'pass' => 'MYSQL_PASSWORD',
+			'usr'  => 'root', 
+			'pass' => 'root',
 		);
 	} 
 
