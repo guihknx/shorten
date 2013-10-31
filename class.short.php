@@ -119,6 +119,27 @@ class shorten{
 		}
 
 	}
+
+	public function checkNick($username) 
+	{
+
+		$query = $this->db->prepare("SELECT COUNT(`id`) FROM `users` WHERE `username`= ?");
+		$query->bindValue(1, $username);
+
+		try{			
+			$query->execute();
+			$rows = $query->fetchColumn();
+
+			if( $rows != 1 )
+				return;
+
+			return true;
+
+		} catch ( PDOException $e ){
+			echo $e->getMessage();
+		}
+
+	}
 }
 
 $a = new shorten();
